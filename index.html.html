@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For You</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      /* Background gradient */
+      background: linear-gradient(to bottom, #ffe6f0, #ff99cc);
+      text-align: center;
+      margin-top: 100px;
+      min-height: 100vh;
+    }
+
+    .box {
+      display: none;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 250px;
+    }
+
+    button {
+      padding: 15px 30px;       /* button lebih besar */
+      margin: 15px;
+      font-size: 20px;          /* huruf besar */
+      border: none;
+      border-radius: 12px;      /* sudut bulat */
+      background-color: #ff66a3;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ff3385;
+    }
+
+    #letterText {
+      white-space: pre-line;
+      font-size: 18px;
+      margin: 20px;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PASSWORD PAGE -->
+  <div id="passwordBox">
+    <h2>Enter Password</h2>
+    <input type="password" id="password" placeholder="">
+    <br><br>
+    <button onclick="checkPassword()">Enter</button>
+  </div>
+
+  <!-- QUESTION PAGE -->
+  <div id="questionBox" class="box">
+    <h2>welcome babe- hmm are you Asyraf Ikhwan? (¬_ ´¬ )</h2>
+    <button onclick="confirmPerson()">YESSS( •̀ 𐃷 •́ )</button>
+  </div>
+
+  <!-- LETTER PAGE -->
+  <div id="letterBox" class="box">
+    <div id="letterText"></div>
+  </div>
+
+  <script>
+    // ====== PASSWORD TYPING PLACEHOLDER ======
+    let passText = "clue? birthday date!˙𐃷˙";
+    let i = 0;
+    let speed = 100;
+    function typePlaceholder() {
+      if (i < passText.length) {
+        document.getElementById("password").placeholder += passText.charAt(i);
+        i++;
+        setTimeout(typePlaceholder, speed);
+      }
+    }
+    typePlaceholder();
+
+    // ====== CHECK PASSWORD ======
+    function checkPassword() {
+      let pass = document.getElementById("password").value;
+      if (pass === "1511") { // <-- tukar ikut birthday/keyword awak
+        document.getElementById("passwordBox").style.display = "none";
+        document.getElementById("questionBox").style.display = "block";
+      } else {
+        alert("alamakk salah! try again babe ദ്ദി╥ ᴗ ╥)");
+      }
+    }
+
+
+    function confirmPerson() {
+      document.getElementById("questionBox").style.display = "none";
+      document.getElementById("letterBox").style.display = "block";
+      typeLetter();
+    }
+
+    // ====== LETTER TYPING ======
+    let letterContent = `hey babe,
+
+I’ve been thinking a lot lately… 
+about 𝙪𝙨, about everything that happened before.
+
+I keep wondering—are you okay? 
+Are you happy with how things turned out?
+
+Sometimes I can’t help but wonder if you still feel the same. 
+Kalau somehow you’re still waiting, or maybe… thinking about starting over again.
+
+I tahu kita both kinda drifted apart because of SPM, 
+but maybe—just maybe—it’s okay to imagine 
+what could happen if we tried again.
+
+I just want to be honest with you. 
+Tak nak pressure you at all, 
+I just feel like it’s better if I ask instead of keeping it inside.
+
+So… how are you really feeling? 
+Is there still a “we” somewhere?`;
+
+    let j = 0;
+    function typeLetter() {
+      if (j < letterContent.length) {
+        document.getElementById("letterText").innerHTML += letterContent.charAt(j);
+        j++;
+        setTimeout(typeLetter, 50); // adjust speed
+      }
+    }
+  </script>
+
+</body>
+</html>
